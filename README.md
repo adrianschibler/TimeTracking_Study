@@ -12,7 +12,7 @@ Eine einfache Zeiterfassungs-Applikation mit React und TypeScript.
 
 ## Demo-Benutzer
 
-Die Anwendung enthält drei vorkonfigurierte Benutzer:
+Die Anwendung enthält drei vorkonfigurierte Benutzer
 
 | Benutzername | Passwort | Name |
 |--------------|----------|------|
