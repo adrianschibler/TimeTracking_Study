@@ -26,7 +26,7 @@ const Login: React.FC = () => {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h1>Zeiterfassung APP Test</h1>
+        <h1>Zeiterfassung</h1>
         <h2>Anmeldung</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
