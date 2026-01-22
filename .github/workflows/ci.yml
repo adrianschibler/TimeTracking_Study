@@ -1,10 +1,13 @@
-name: CD - Deploy to Netlify
+name: CI - Tests
 on:
   push:
     branches:
-      - main
+      - '**'
+  pull_request:
+    branches:
+      - '**'
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
     
     steps:
@@ -20,11 +23,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       
+      - name: Run Linter
+        run: npm run lint
+      
+      - name: Run Tests
+        run: npm run test:run
+      
       - name: Build
         run: npm run build
-      
-      - name: Deploy to Netlify
-        run: npx netlify-cli deploy --prod --dir=dist
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
