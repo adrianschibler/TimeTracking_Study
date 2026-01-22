@@ -1,0 +1,39 @@
+# Netlify Konfiguration für Zeiterfassungs-Applikation
+# Metallbau Keller AG
+
+[build]
+  # Build-Kommando das ausgeführt wird
+  command = "npm run build"
+  
+  # Verzeichnis mit den fertigen Dateien
+  publish = "dist"
+  
+  # Funktionen-Verzeichnis (falls benötigt)
+  # functions = "netlify/functions"
+
+# Node.js Version festlegen
+[build.environment]
+  NODE_VERSION = "20"
+
+# Redirects für Single Page Application (SPA)
+# Alle Anfragen gehen zu index.html (wichtig für React Router, Vue Router, etc.)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# HTTPS erzwingen (HTTP -> HTTPS Redirect)
+[[redirects]]
+  from = "http://*"
+  to = "https://:splat"
+  status = 301
+  force = true
+
+# Headers für Sicherheit
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
